@@ -1,24 +1,31 @@
-# README
+# タイピング仙人
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+タイピングの練習をしたり、他のプレイヤーと競争やコミュニケーションをしたりできるコミュニティーサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+自分はタイピングが好きで、青春時代のほとんどをキーボードでタイピングすることに費やしました。
+しかし、タイピングは基本的には一人で行うものであり、同じ趣味を持つ人を見つけることは容易ではありません。
+そのため、タイピングに特化したコミュニティサイトがあれば、共通の趣味を持った人達を見つけることができると考えました。
+コミュニケーションツール以外の活用方法も、単純にタイピングの練習ができるという、他の人達に役立つ活用方法もできると考え、
+このテーマを選びました。
 
-* Ruby version
+### ターゲットユーザー
+- タイピングの練習をしたい人
+- タイピングが好きで、共通の趣味を持った人と交流をしたい人
 
-* System dependencies
+### 主な利用シーン
+- タイピングの練習をしたい時
+- タイピングの速度を測りたい時
+- 同じタイピング仲間と交流したい時
 
-* Configuration
+## 設計書
+後ほど作成予定
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS : windows11
+- 言語 : HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク : Ruby on Rails
+- JSライブラリ : jQuery
+- IDE : Cloud9
