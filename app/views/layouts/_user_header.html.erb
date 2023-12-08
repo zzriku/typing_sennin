@@ -9,21 +9,21 @@
           <div class="col">
             <div class="d-flex flex-row-reverse bd-highlight">
               <ul class="nav pull-right nav-pills">
+                <li>
+                  <%= link_to "タイピング", typings_path, class: "btn btn-outline-dark" %>
+                </li>
+                <li>
+                  <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
+                </li>
+                <li>
+                  <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
+                </li>
                 <% if user_signed_in? %>
                   <li>
                     <%= link_to "プロフィール", users_profile_path, class: "btn btn-outline-dark"%>
                   </li>
                   <li>
-                    <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
-                  </li>
-                  <li>
-                    <%= link_to "タイピング", typings_path, class: "btn btn-outline-dark" %>
-                  </li>
-                  <li>
                     <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", method: :delete %>
-                  </li>
-                  <li>
-                    <%= link_to "Q&A/お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
                   </li>
                 <% else %>
                   <li>

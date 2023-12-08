@@ -1,0 +1,11 @@
+<%= render "layouts/user_header" %>
+
+<h2>プロフィール編集</h2>
+
+<%= form_with model: current_user, url: users_profile_path, method: :patch do |f| %>
+<div class="field">
+  <%= f.label :handle, "ハンドルネーム" %>
+  <%= f.text_field :handle, autofocus: true, autocomplete: "handle" %>
+</div>
+<%= f.submit "編集内容を保存" %>
+<% end %>
