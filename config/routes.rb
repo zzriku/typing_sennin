@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "contact"=>"homes#contact"
 
+    post "users/guest_sign_in"=>"users/sessions#guest_sign_in"
+    get "users/guest_sign_in"=>"users/sessions#guest_sign_in"
     get "users/profile"=>"users#show"
     get "users/profile/edit"=>"users#edit"
     patch "users/profile"=>"users#update"
