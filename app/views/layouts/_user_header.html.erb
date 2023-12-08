@@ -1,0 +1,43 @@
+<header>
+  <div class="p-1 border-bottom border-secondary">
+    <nav>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <%= link_to "LOGO", root_path, class: "btn btn-outline-dark btn-lg"%>
+          </div>
+          <div class="col">
+            <div class="d-flex flex-row-reverse bd-highlight">
+              <ul class="nav pull-right nav-pills">
+                <% if user_signed_in? %>
+                  <li>
+                    <%= link_to "プロフィール", users_profile_path, class: "btn btn-outline-dark"%>
+                  </li>
+                  <li>
+                    <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "タイピング", typings_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", method: :delete %>
+                  </li>
+                  <li>
+                    <%= link_to "Q&A/お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
