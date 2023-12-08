@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  devise_for :users, skip: [:passwords], controllers: {
+    registrations: "user/registrations",
+    sessions: "user/sessions"
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
