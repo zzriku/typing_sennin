@@ -1,5 +1,5 @@
 <%= render "layouts/user_header" %>
 
-<h3><%= @current_user.handle %></h3>
+<h3><%= @user.handle %></h3>
 
-<%= link_to "プロフィールを編集", users_profile_edit_path %>
+<%= link_to "プロフィールを編集", edit_user_path(current_user) %>

@@ -2,7 +2,7 @@
 
 <h2>プロフィール編集</h2>
 
-<%= form_with model: current_user, url: users_profile_path, method: :patch do |f| %>
+<%= form_with model: @user do |f| %>
 <div class="field">
   <%= f.label :handle, "ハンドルネーム" %>
   <%= f.text_field :handle, autofocus: true, autocomplete: "handle" %>

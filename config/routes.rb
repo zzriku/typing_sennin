@@ -17,10 +17,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "contact"=>"homes#contact"
 
-    get "users/profile/"=>"users#show"
-    get "users/profile/edit"=>"users#edit"
-    patch "users/profile"=>"users#update"
-
+    resources :users
     resources :posts, except: [:index]
     resources :favorites, only: [:create, :destroy]
     resources :comments , only: [:create, :destroy]
