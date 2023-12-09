@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "contact"=>"homes#contact"
 
-    resources :users, pmonly: [:show, :edit, :update] #カスタムURLで後に変更
+    resources :users, only: [:show, :edit, :update] #カスタムURLで後に変更するかも
     resources :posts, except: [:index]
     resources :favorites, only: [:create, :destroy]
     resources :comments , only: [:create, :destroy]
