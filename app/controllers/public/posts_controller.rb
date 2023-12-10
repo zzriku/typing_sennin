@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   def index
+    @posts = Post.all
+    @user = current_user
   end
 
   def new
@@ -20,6 +22,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @posts = Post.all
+    @user = @post.user
   end
 
   private

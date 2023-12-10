@@ -1,1 +1,11 @@
 <%= render "layouts/user_header" %>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= link_to post_path(post) do %>
+      <p>タイトル: <%= post.title %></p>
+    <% end %>
+    <p>ユーザー名: <%= post.user.handle %></p>
+    <td>コメント数: <%= post.comments.size %></td>
+  </div>
+<% end %>
