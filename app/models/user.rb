@@ -4,8 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :typings, dependent: :destroy
+  has_many :scoreboards, dependent: :destroy
+
   GUEST_USER_EMAIL = "guest@guest.com"
-  
+
   #ゲストログイン機能
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
@@ -13,7 +19,7 @@ class User < ApplicationRecord
       user.handle = "ゲスト"
     end
   end
-    
+
   #ユーザーのアイコン用
   has_one_attached :image
 end
