@@ -1,0 +1,10 @@
+<%= render "layouts/user_header" %>
+
+<%= form_with model: Post.new do |f| %>
+<h4>タイトル</h4>
+<%= f.text_field :title %>
+<h4>本文</h4>
+<%= f.text_area :content %>
+
+<%= f.submit 'フォームを投稿' %>
+<% end %>
