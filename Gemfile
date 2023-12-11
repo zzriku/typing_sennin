@@ -75,3 +75,4 @@ gem "enum_help"
 gem "kaminari"
 gem "rspec-rails"
 gem "image_processing"
+gem 'webpacker', '~> 5.0'

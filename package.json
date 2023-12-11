@@ -1,0 +1,26 @@
+{
+  "name": "typing_sennin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:zzriku/typing_sennin.git",
+  "author": "zzriku <zzriku@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@rails/activestorage": "^7.1.2",
+    "@rails/ujs": "^7.1.2",
+    "@rails/webpacker": "5.4.4",
+    "bootstrap": "4.6.2",
+    "channels": "^0.0.4",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "wepack": "^0.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  }
+}
