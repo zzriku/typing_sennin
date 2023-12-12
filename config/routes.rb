@@ -18,9 +18,10 @@ Rails.application.routes.draw do
     get "contact"=>"homes#contact"
 
     resources :users, only: [:show, :edit, :update] #カスタムURLにしたいから後で変更するかも
-    resources :posts, only: [:index, :new, :create, :show] #edit,destoryは後から追加するかも
+    resources :posts, only: [:index, :new, :create, :show] do #edit,destoryは後から追加するか
+      resources :comments, only: [:create, :destroy, :edit, :update]
+    end
     resources :favorites, only: [:create, :destroy]
-    resources :comments , only: [:create, :destroy, :create, :update]
     resources :typings, only: [:new, :create]
   end
 
