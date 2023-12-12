@@ -6,3 +6,25 @@
   <p><%= @post.content %></p>
   <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
 </div>
+
+<div>
+  <p>コメント件数：<%= @post.comments.count %></p>
+  <% @post.comments.each do |comment| %>
+  <% if comment.user && comment.user.image.attached? %>
+    <p><%= image_tag comment.user.image, size: "100x100" %></p>
+    <% else %>
+    <%= image_tag 'sennin', size: "100x100" %>
+    <% end %>
+    <%= comment.user.handle %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.content %>
+    <% if comment.user == current_user %>
+    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@post, @comment] do |f| %>
+    <%= f.text_area :content, rows: '5', placeholder: "コメントをする" %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>

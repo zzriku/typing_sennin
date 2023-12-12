@@ -25,6 +25,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @posts = Post.all
     @user = @post.user
+    @comment = Comment.new
   end
 
   private

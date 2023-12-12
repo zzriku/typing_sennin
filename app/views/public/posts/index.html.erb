@@ -6,6 +6,6 @@
       <p>タイトル: <%= post.title %></p>
     <% end %>
     <p>ユーザー名: <%= post.user.handle %></p>
-    <td>コメント数: <%= post.comments.size %></td>
+    <td>コメント数: <%= post.comments.count %></td>
   </div>
 <% end %>

@@ -1,11 +1,25 @@
 <%= render "layouts/user_header" %>
 
-<h3><%= @user.handle %></h3>
-<p>画像</p>
+<div>
+  <h3><%= @user.handle %></h3>
 <% if @user.image.attached? %>
   <%= image_tag @user.image, size: "125x125" %>
 <% else %>
   <%= image_tag 'sennin', size: "125x125" %>
 <% end %>
+<% if @user.id == current_user.id %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
 
-<%= link_to "プロフィールを編集", edit_user_path(current_user) %>
+<% @post.each do |post| %>
+  <div>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image %>
+    <% end %>
+    <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
+    <p>フォーム名：<%= post.title %></p>
+    <p>ユーザーネーム：<%= post.user.handle %></p>
+    <td>コメント数: <%= post.comments.count %></td>
+  </div>
+<% end %>
