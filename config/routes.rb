@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update] #カスタムURLにしたいから後で変更するかも
     resources :posts, only: [:index, :new, :create, :show] do #edit,destoryは後から追加するか
-      resources :comments, only: [:create, :destroy, :edit, :update]
+      resources :comments, only: [:create, :destroy, :edit, :update] do
+        resources :favorites, only: [:create, :destroy]
+      end
     end
-    resources :favorites, only: [:create, :destroy]
     resources :typings, only: [:new, :create]
   end
 

@@ -20,6 +20,6 @@ class User < ApplicationRecord
     end
   end
 
-  #ユーザーのアイコン用
+  #ユーザーのアイコン表示機能
   has_one_attached :image
 end
