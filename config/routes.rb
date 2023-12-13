@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post "users/guest_sign_in"=>"public/sessions#guest_sign_in"
     get "users/guest_sign_in"=>"public/sessions#guest_sign_in"
+    delete "users/guest_sign_out"=>"public/sessions#destroy"
   end
 
   scope module: :public do

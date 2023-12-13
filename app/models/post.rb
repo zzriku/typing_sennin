@@ -10,6 +10,9 @@ class Post < ApplicationRecord
     update(comment_count: comments.count)
   end
 
+  #ユーザーのアイコン表示機能
+  has_one_attached :image
+
   #いいね数を計算するメソッド
   #def favorited_by?(user)
     #favorites.exists?(user_id: user.id)

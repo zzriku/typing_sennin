@@ -19,6 +19,11 @@ class User < ApplicationRecord
       user.handle = "ゲスト"
     end
   end
+  
+  #ゲストログアウト機能
+  def guest?
+    email == GUEST_USER_EMAIL
+  end
 
   #ユーザーのアイコン表示機能
   has_one_attached :image

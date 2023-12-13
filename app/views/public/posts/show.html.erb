@@ -23,13 +23,13 @@
     <% if comment.favorited_by?(current_user) %>
     <p>
       <%= link_to post_comment_favorite_path(@post, comment), method: :delete do %>
-      ❤<% comment.favorites.count %> いいね
+      ❤<% comment.favorites.count %>
       <% end %>
     </p>
     <% else %>
     <p>
       <%= link_to post_comment_favorite_path(@post, comment), method: :post do %>
-      ❤<%= comment.favorites.count %> いいね
+      ❤<%= comment.favorites.count %>
       <% end %>
     </p>
   <% end %>

@@ -25,6 +25,10 @@
                   <li>
                     <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", method: :delete %>
                   </li>
+                <% elsif current_user&.guest? %>
+                  <li>
+                    <%= link_to "ゲストログアウト", users_guest_sign_out_path, class: "btn btn-outline-dark", method: :delete %>
+                  </li>
                 <% else %>
                   <li>
                     <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>
