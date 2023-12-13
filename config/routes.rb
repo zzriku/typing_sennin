@@ -16,14 +16,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "contact"=>"homes#contact"
+    post "posts/:id/comments/:id/favorites/:id"=>"favorites#create"
+    delete "posts/:id/comments/:id/favorites/:id"=>"favorites#delete"
 
     resources :users, only: [:show, :edit, :update] #カスタムURLにしたいから後で変更するかも
+    resources :typings, only: [:new, :create]
     resources :posts, only: [:index, :new, :create, :show] do #edit,destoryは後から追加するか
       resources :comments, only: [:create, :destroy, :edit, :update] do
         resources :favorites, only: [:create, :destroy]
       end
     end
-    resources :typings, only: [:new, :create]
   end
 
   namespace :admin do
