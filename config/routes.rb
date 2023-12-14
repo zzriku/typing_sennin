@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post "posts/:id/comments/:id/favorites/:id"=>"favorites#create"
     delete "posts/:id/comments/:id/favorites/:id"=>"favorites#delete"
     get "search"=>"searches#search"
+    get "typing"=>"typings#index"
 
     resources :users, only: [:show, :edit, :update] #カスタムURLにしたいから後で変更するかも
     resources :typings, only: [:new, :create]
