@@ -13,6 +13,21 @@ class Post < ApplicationRecord
   #ユーザーのアイコン表示機能
   has_one_attached :image
 
+  #検索機能
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post = Post.where("title LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @post = Post.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @post = Post.where("title LIKE?","%#{word}")
+    elsif search == "partical_match"
+      @post = Post.where("title LIKE?","%#{word}%")
+    else
+      @post = Post.all
+    end
+  end
+
   #いいね数を計算するメソッド
   #def favorited_by?(user)
     #favorites.exists?(user_id: user.id)
