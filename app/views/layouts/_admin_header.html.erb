@@ -16,35 +16,25 @@
                     <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
                     <%= f.submit "検索", class: "btn btn-primary" %>
                   <% end %>
-                </div>
-                <li>
-                  <%= link_to "タイピング", typing_path, class: "btn btn-outline-dark" %>
-                </li>
-                <li>
-                  <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
-                </li>
-                <li>
-                  <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
-                </li>
-                <% if user_signed_in? %>
+                <% if admin_signed_in? %>
                   <li>
-                    <%= link_to "プロフィール", user_path(current_user), class: "btn btn-outline-dark" %>
+                    <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-outline-dark" %>
                   </li>
                   <li>
-                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", method: :delete %>
+                    <%= link_to "スレッド一覧", admin_posts_path, class: "btn btn-outline-dark" %>
                   </li>
-                <% elsif current_user&.guest? %>
                   <li>
-                    <%= link_to "ゲストログアウト", users_guest_sign_out_path, class: "btn btn-outline-dark", method: :delete %>
+                    <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", method: :delete %>
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>
+                    <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
                   </li>
                   <li>
-                    <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>
+                    <%= link_to"ログイン", new_admin_session_path, class: "btn btn-outline-dark" %>
                   </li>
                 <% end %>
+                </div>
               </ul>
             </div>
           </div>

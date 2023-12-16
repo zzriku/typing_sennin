@@ -7,7 +7,6 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import 'script'
 
 Rails.start()
 Turbolinks.start()
