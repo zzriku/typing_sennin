@@ -2,13 +2,15 @@ class Public::FavoritesController < ApplicationController
 
   def create
     comment = Comment.find(params[:comment_id])
-    @favorite = Favorite.create(user_id: current_user.id, comment_id: comment.id)
+    favorite = current_user.favorites.new(comment_id: comment.id)
+    favorite.save
     redirect_to post_path(comment.post)
   end
 
   def destroy
     comment = Comment.find(params[:comment_id])
-    Favorite.find_by(user_id: current_user.id, comment_id: comment.id).destroy
+    favorite = current_user.favorites.find_by(comment_id: comment.id)
+    favorite.destroy
     redirect_to post_path(comment.post)
   end
 end

@@ -27,13 +27,4 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
-
-  #いいね数を計算するメソッド
-  #def favorited_by?(user)
-    #favorites.exists?(user_id: user.id)
-  #end
-
-  def favorited_by?(user)
-    user.present? && favorites.exists?(user_id: user.id)
-  end
 end

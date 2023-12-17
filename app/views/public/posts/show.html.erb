@@ -20,20 +20,8 @@
     <% if comment.user == current_user %>
     <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
     <% end %>
-    <% if comment.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_comment_favorite_path(@post, comment), method: :delete do %>
-      ❤<% comment.favorites.count %>
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_comment_favorite_path(@post, comment), method: :post do %>
-      ❤<%= comment.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
-  <% end %>
+    <td><%= render "layouts/btn", comment: comment %></td>
+<% end %>
 </div>
 <div>
   <%= form_with model: [@post, Comment.new] do |f| %>

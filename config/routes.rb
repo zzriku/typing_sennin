@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "contact"=>"homes#contact"
-    post "posts/:id/comments/:id/favorites/:id"=>"favorites#create"
-    delete "posts/:id/comments/:id/favorites/:id"=>"favorites#delete"
+    post "posts/:id/comments/:id/favorites/:id"=>"favorites#create", as: :post_comment_favorites
+    delete "posts/:id/comments/:id/favorites/:id"=>"favorites#destroy", as: :post_comment_favorite
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
 
