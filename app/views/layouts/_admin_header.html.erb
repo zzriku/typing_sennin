@@ -24,7 +24,7 @@
                     <%= link_to "スレッド一覧", admin_posts_path, class: "btn btn-outline-dark" %>
                   </li>
                   <li>
-                    <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", method: :delete %>
+                    <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
                   </li>
                 <% else %>
                   <li>

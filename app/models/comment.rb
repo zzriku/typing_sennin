@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
 
   #いいね数を計算するメソッド
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    user.present? && favorites.exists?(user_id: user.id)
   end
 
   #検索機能

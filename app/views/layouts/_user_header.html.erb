@@ -17,25 +17,26 @@
                     <%= f.submit "検索", class: "btn btn-primary" %>
                   <% end %>
                 </div>
-                <li>
-                  <%= link_to "タイピング", typing_path, class: "btn btn-outline-dark" %>
-                </li>
-                <li>
-                  <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
-                </li>
-                <li>
-                  <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
-                </li>
+                <% if !user_signed_in? && !current_user&.guest? %>
+                  <li>
+                    <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-outline-dark", method: :post %>
+                  </li>
+                <% end %>
+                  <li>
+                    <%= link_to "タイピング", typing_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
+                  </li>
                 <% if user_signed_in? %>
                   <li>
                     <%= link_to "プロフィール", user_path(current_user), class: "btn btn-outline-dark" %>
                   </li>
                   <li>
-                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", method: :delete %>
-                  </li>
-                <% elsif current_user&.guest? %>
-                  <li>
-                    <%= link_to "ゲストログアウト", users_guest_sign_out_path, class: "btn btn-outline-dark", method: :delete %>
+                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
                   </li>
                 <% else %>
                   <li>
