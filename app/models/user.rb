@@ -10,6 +10,12 @@ class User < ApplicationRecord
   has_many :typings, dependent: :destroy
   has_many :scoreboards, dependent: :destroy
 
+  scope :latest, -> { order(created_at: :desc) }
+  
+  enum status : {
+    
+  }
+
   GUEST_USER_EMAIL = "guest@guest.com"
 
   #ゲストログイン機能
@@ -19,7 +25,7 @@ class User < ApplicationRecord
       user.handle = "ゲスト"
     end
   end
-  
+
   #ゲストログアウト機能
   def guest?
     email == GUEST_USER_EMAIL
