@@ -11,15 +11,4 @@
   <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark" %></p>
   <% end %>
 </div>
-
-<% @post.each do |post| %>
-  <div>
-    <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image %>
-    <% end %>
-    <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
-    <p>フォーム名：<%= post.title %></p>
-    <p>ユーザーネーム：<%= post.user.handle %></p>
-    <td>コメント数: <%= post.comments.count %></td>
-  </div>
-<% end %>
+<li><%= link_to liked_comments_user_path(current_user), data: { "turbolinks" => false } do %><i class="fas fa-thumbs-up"></i>いいねしたコメント<% end %></li>

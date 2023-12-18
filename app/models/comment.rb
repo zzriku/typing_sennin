@@ -10,6 +10,15 @@ class Comment < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #いいねしたコメントを表示
+  def self.liked_comments(user, page, per_page)
+  includes(:favorites)
+    .where(favorites: { user_id: user.id })
+    .order(created_at: :desc)
+    .page(page)
+    .per(per_page)
+  end
+
   #検索機能
   def self.looks(search, word)
     if search == "perfect_match"

@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
 
-    resources :users, only: [:show, :edit, :update] #カスタムURLにしたいから後で変更するかも
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get :liked_comments
+      end
+    end
     resources :typings, only: [:new, :create]
     resources :posts, only: [:index, :new, :create, :show] do #edit,destoryは後から追加するか
       resources :comments, only: [:create, :destroy, :edit, :update] do

@@ -15,6 +15,10 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def liked_comments
+    @liked_comments = Comment.liked_comments(current_user, params[:page], 12)
+  end
+
   private
 
   def user_params

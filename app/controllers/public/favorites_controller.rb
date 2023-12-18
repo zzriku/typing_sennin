@@ -1,5 +1,5 @@
 class Public::FavoritesController < ApplicationController
-
+  
   def create
     comment = Comment.find(params[:comment_id])
     favorite = current_user.favorites.new(comment_id: comment.id)

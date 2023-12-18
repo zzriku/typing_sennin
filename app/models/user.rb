@@ -12,9 +12,6 @@ class User < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
   
-  enum status : {
-    
-  }
 
   GUEST_USER_EMAIL = "guest@guest.com"
 
