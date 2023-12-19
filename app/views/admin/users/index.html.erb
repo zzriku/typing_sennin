@@ -1,3 +1,4 @@
+<%= render 'layouts/admin_header' %>
 <div class="mb-8 text-center">
   <span class="text-3xl font-bold">
     ユーザー一覧
@@ -16,10 +17,10 @@
             <table class="table table-bordered mb-0">
               <thead>
                 <tr>
-                  <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Name</th>
+                  <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Handle</th>
                   <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Email</th>
                   <th class="px-6 py-3 font-weight-bold text-center text-uppercase border-0">Status</th>
-                  <th class="px-6 py-3 font-weight-bold text-center text-uppercase border-0">Previous Orders</th>
+                  <th class="px-6 py-3 font-weight-bold text-center text-uppercase border-0">Post/Comment</th>
                   <th class="px-6 py-3 font-weight-semibold text-capitalize border-0"></th>
                 </tr>
               </thead>
@@ -29,13 +30,12 @@
                     <td class="p-2 align-middle"><%= user.handle %></td>
                     <td class="p-2 align-middle"><%= user.email %></td>
                     <td class="p-2 text-center align-middle">
-                      <% if user.status === "normal" %>
+                      <% if user.is_active === "normal" %>
                         <span class="badge bg-primary text-white">Normal</span>
                       <% else %>
                         <span class="badge bg-danger text-white">Banned</span>
                       <% end %>
                     </td>
-                    <td class="p-2 text-center align-middle"><%= user.orders.size %></td>
                     <td class="p-2 align-middle">
                       <%= link_to admin_user_path(user), class: "text-muted" do %>
                         詳細

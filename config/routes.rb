@@ -21,14 +21,15 @@ Rails.application.routes.draw do
     delete "posts/:id/comments/:id/favorites/:id"=>"favorites#destroy", as: :post_comment_favorite
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
+    get "type.js"=>"typings#index"
 
     resources :users, only: [:show, :edit, :update] do
       member do
         get :liked_comments
       end
     end
-    resources :typings, only: [:new, :create]
-    resources :posts, only: [:index, :new, :create, :show] do #edit,destoryは後から追加するか
+    resources :typings, only: [:index]
+    resources :posts, only: [:index, :new, :create, :show] do
       resources :comments, only: [:create, :destroy, :edit, :update] do
         resources :favorites, only: [:create, :destroy]
       end
