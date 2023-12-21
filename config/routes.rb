@@ -39,7 +39,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/"=>"homes#top"
     get "admins/sign_out"=>"admin/sessions#destroy"
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      member do
+        patch :withdraw
+      end
+    end
     resources :posts, only: [:index, :show, :destroy, :update]
     resources :comments, only: [:index, :destroy, :update]
   end

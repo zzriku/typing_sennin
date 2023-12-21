@@ -13,6 +13,13 @@ class Admin::UsersController < ApplicationController
     redirect_to request.referer, notice: 'ユーザー情報が更新されました。'
   end
 
+  def withdraw
+    @user = User.find(params[:id])
+    #return if @user.guest?
+    @user.update(is_active: !@user.is_active)
+    redirect_to admin_users_path, notice: 'ユーザーのステータスを変更しました。'
+  end
+
   private
 
   def set_user

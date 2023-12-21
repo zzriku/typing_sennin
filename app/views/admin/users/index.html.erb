@@ -1,14 +1,8 @@
 <%= render 'layouts/admin_header' %>
-<div class="mb-8 text-center">
-  <span class="text-3xl font-bold">
-    ユーザー一覧
-  </span>
-</div>
-
 <div class="container mb-4">
   <div class="row justify-content-center">
     <div class="col-12">
-      <h1 class="text-center display-4 font-weight-bold mb-4">Customers</h1>
+      <h1 class="text-center display-4 font-weight-bold mb-4">Users</h1>
     </div>
     <div class="col-12">
       <div class="card rounded-3xl border-0">
@@ -20,7 +14,8 @@
                   <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Handle</th>
                   <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Email</th>
                   <th class="px-6 py-3 font-weight-bold text-center text-uppercase border-0">Status</th>
-                  <th class="px-6 py-3 font-weight-bold text-center text-uppercase border-0">Post/Comment</th>
+                  <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Ban/Unban</th>
+                  <th class="px-6 py-3 font-weight-bold text-left text-uppercase border-0">Post/Comments</th>
                   <th class="px-6 py-3 font-weight-semibold text-capitalize border-0"></th>
                 </tr>
               </thead>
@@ -30,10 +25,17 @@
                     <td class="p-2 align-middle"><%= user.handle %></td>
                     <td class="p-2 align-middle"><%= user.email %></td>
                     <td class="p-2 text-center align-middle">
-                      <% if user.is_active === "normal" %>
+                      <% if user.is_active %>
                         <span class="badge bg-primary text-white">Normal</span>
                       <% else %>
                         <span class="badge bg-danger text-white">Banned</span>
+                      <% end %>
+                    </td>
+                    <td class="p-2 align-middle">
+                      <% if user.is_active %>
+                        <%= link_to "退会する", withdraw_admin_user_path(user), method: :patch, class: "text-muted", data: { confirm: '本当に退会させますか？' } %>
+                      <% else %>
+                        <%= link_to "再開する", withdraw_admin_user_path(user), method: :patch, class: "text-muted", data: { confirm: '本当に再開させますか？' } %>
                       <% end %>
                     </td>
                     <td class="p-2 align-middle">
