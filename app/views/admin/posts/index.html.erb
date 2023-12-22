@@ -10,7 +10,7 @@
           <% @posts.each do |post| %>
             <div class="card mb-3">
               <div class="card-body">
-                <%= link_to post_path(post) do %>
+                <%= link_to admin_post_path(post) do %>
                   <h5 class="card-title">【<%= post.id %>】 <%= post.title %></h5>
                 <% end %>
                 <p class="card-text">投稿者: <%= post.user.handle %></p>

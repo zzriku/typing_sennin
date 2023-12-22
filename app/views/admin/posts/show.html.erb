@@ -28,20 +28,10 @@
                 <h6 class="mt-0"><strong><%= link_to comment.user.handle, user_path(comment.user) %></strong></h6>
                 <p><small><%= comment.created_at.strftime('%Y/%m/%d') %></small></p>
                 <p><%= comment.content %></p>
-                <% if comment.user == current_user %>
-                  <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger btn-sm" %>
-                <% end %>
+                  <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-danger btn-sm" %>
                 <p><%= render "layouts/btn", comment: comment %></p>
               </div>
             </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="card mt-4">
-        <div class="card-body">
-          <%= form_with model: [@post, Comment.new], html: { class: "mt-4" } do |f| %>
-            <%= f.text_area :content, rows: '5', placeholder: "コメントをする", class: "form-control mb-2" %>
-            <%= f.submit "送信", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
