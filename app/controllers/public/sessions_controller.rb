@@ -10,7 +10,14 @@ class Public::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    reject_inactive_user if params[:user]
+    if params[:user]
+      reject_inactive_user
+      return if performed?
+    end
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    redirect_to after_sign_in_path_for(resource)
   end
 
   # DELETE /resource/sign_out
@@ -24,14 +31,6 @@ class Public::SessionsController < Devise::SessionsController
     sign_in user
     flash[:notice] = "ゲストでログインしました。"
     redirect_to root_path
-  end
-
-  #退会後のログインを阻止
-  def reject_inactive_user
-    @user = User.find_by(email: params[:user][:email])
-    if @user && @user.valid_password?(params[:user][:password]) && !@user.is_active
-      redirect_to new_user_session_path, alert: 'アカウントは凍結されています。お問い合わせに連絡してください。'
-    end
   end
 
   def after_sign_in_path_for(resource)
@@ -50,4 +49,12 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   private
+
+  #退会後のログインを阻止
+  def reject_inactive_user
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.valid_password?(params[:user][:password]) && !@user.is_active
+      redirect_to new_user_session_path, alert: 'アカウントは凍結されています。お問い合わせに連絡してください。'
+    end
+  end
 end
