@@ -1,27 +1,32 @@
 <%= render "layouts/user_header" %>
-<h2>ログイン</h2>
-
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, "パスワードを保存する" %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="text-center mb-4">
+        <h2>ログイン</h2>
+      </div>
+      <%= form_with model: @user, url: user_session_path do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, "パスワード", class: "form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="mb-3 form-check">
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <%= f.label :remember_me, class: "form-check-label" do %>
+              パスワードを保存する
+            <% end %>
+          </div>
+        <% end %>
+        <div class="mb-3">
+          <%= f.submit "ログインする", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <%= render "public/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログインする" %>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
