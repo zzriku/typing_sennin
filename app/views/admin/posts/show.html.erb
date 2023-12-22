@@ -1,30 +1,50 @@
 <%= render 'layouts/admin_header' %>
-<div>
-  <p><%= @post.title %></p>
-  <p><%= @post.user.handle %></p>
-  <p><%= @post.content %></p>
-  <p>投稿日：<%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-</div>
-
-<div>
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-  <% if comment.user && comment.user.image.attached? %>
-    <p><%= image_tag comment.user.image, size: "100x100" %></p>
-    <% else %>
-    <%= image_tag 'sennin', size: "100x100" %>
-    <% end %>
-    <%= comment.user.handle %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.content %>
-    <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-    <% end %>
-    <td><%= render "layouts/btn", comment: comment %></td>
-<% end %>
-</div>
-<div>
-  <%= form_with model: [@post, Comment.new] do |f| %>
-    <%= f.text_area :content, rows: '5', placeholder: "コメントをする" %>
-    <%= f.submit "送信" %>
-  <% end %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          <h4 class="mb-0"><%= @post.title %></h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">投稿者: <%= link_to @post.user.handle, user_path(@post.user) %></p>
+          <p class="card-text"><%= @post.content %></p>
+          <p class="card-text">投稿日：<%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-header bg-dark text-white">
+          <h5 class="mb-0">コメント件数：<%= @post.comments.count %></h5>
+        </div>
+        <div class="card-body">
+          <% @post.comments.each do |comment| %>
+            <div class="media mb-4">
+              <% if comment.user && comment.user.image.attached? %>
+                <%= image_tag comment.user.image, size: "100x100", class: "mr-3 rounded-circle" %>
+              <% else %>
+                <%= image_tag 'sennin', size: "100x100", class: "mr-3 rounded-circle" %>
+              <% end %>
+              <div class="media-body">
+                <h6 class="mt-0"><strong><%= link_to comment.user.handle, user_path(comment.user) %></strong></h6>
+                <p><small><%= comment.created_at.strftime('%Y/%m/%d') %></small></p>
+                <p><%= comment.content %></p>
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger btn-sm" %>
+                <% end %>
+                <p><%= render "layouts/btn", comment: comment %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-body">
+          <%= form_with model: [@post, Comment.new], html: { class: "mt-4" } do |f| %>
+            <%= f.text_area :content, rows: '5', placeholder: "コメントをする", class: "form-control mb-2" %>
+            <%= f.submit "送信", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
