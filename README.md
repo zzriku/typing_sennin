@@ -21,7 +21,10 @@
 - 同じタイピング仲間と交流したい時
 
 ## 設計書
-- ER図
+- ER図 <br>
+  <img src="https://github.com/zzriku/typing_sennin/assets/135505493/70efe3f0-76c2-47bc-8be9-9b83c78028d8" width="300">
+- テーブル定義書 <br>
+  https://docs.google.com/spreadsheets/d/1XjMqvyYQlkGbpa6eLoy3Kq7X1K2WavRcvin_MkQxfOg/edit#gid=1619535258
 
 ## 開発環境
 - OS : windows 11
@@ -29,6 +32,8 @@
 - フレームワーク : Ruby on Rails
 - JSライブラリ : jQuery
 - IDE : Cloud9
+- 本番環境 AWS(EC2,Nginx,Puma)
 
 ## 使用素材
-- https://www.ac-illust.com/
+- illustAC様
+  https://www.ac-illust.com/

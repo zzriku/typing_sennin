@@ -1,43 +1,41 @@
 <header>
   <div class="p-1 border-bottom border-secondary">
-    <nav>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <%= link_to "LOGO", admin_path, class: "btn btn-outline-dark btn-lg" %>
-          </div>
-          <div class="col">
-            <div class="d-flex flex-row-reverse bd-highlight">
-              <ul class="nav pull-right nav-pills">
-                <div class="search_form">
-                  <%= form_with url: search_path, local: true, method: :get do |f| %>
-                    <%= f.text_field :word %>
-                    <%= f.select :range, options_for_select([['コメント'], ['タイトル']]) %>
-                    <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-                    <%= f.submit "検索", class: "btn btn-primary" %>
-                  <% end %>
-                <% if admin_signed_in? %>
-                  <li>
-                    <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-outline-dark" %>
-                  </li>
-                  <li>
-                    <%= link_to "スレッド一覧", admin_posts_path, class: "btn btn-outline-dark" %>
-                  </li>
-                  <li>
-                    <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
-                  </li>
-                <% else %>
-                  <li>
-                    <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
-                  </li>
-                  <li>
-                    <%= link_to"ログイン", new_admin_session_path, class: "btn btn-outline-dark" %>
-                  </li>
-                <% end %>
-                </div>
-              </ul>
-            </div>
-          </div>
+    <nav class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-auto">
+          <% link_to admin_path do %>
+            <%= image_tag("typing_sennin", alt: "LOGO", size: "100x50") %>
+          <% end %>
+        </div>
+        <div class="col-auto">
+          <form class="d-flex align-items-center" action="<%= search_path %>" method="get">
+            <%= text_field_tag :word, nil, class: "form-control mr-2", placeholder: "検索" %>
+            <%= select_tag :range, options_for_select([['コメント'], ['タイトル']]), class: "form-control mr-2" %>
+            <%= select_tag :search, options_for_select([["完全一致", "perfect_match"], ["前方一致", "forward_match"], ["後方一致", "backward_match"], ["部分一致", "partial_match"]]), class: "form-control mr-2" %>
+            <%= submit_tag "検索", class: "btn btn-primary" %>
+          </form>
+        </div>
+        <div class="col-auto">
+          <ul class="list-inline">
+            <% if admin_signed_in? %>
+              <li class="list-inline-item">
+                <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-outline-dark" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to "スレッド一覧", admin_posts_path, class: "btn btn-outline-dark" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
+              </li>
+            <% else %>
+              <li class="list-inline-item">
+                <%= link_to "Q&A / お問い合わせ", contact_path, class: "btn btn-outline-dark" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to "ログイン", new_admin_session_path, class: "btn btn-outline-dark" %>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>
