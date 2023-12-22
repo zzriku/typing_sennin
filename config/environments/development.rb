@@ -40,6 +40,18 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
+  
+  #メールお問い合わせ機能
+  config.action_mailer.default_url_options = {  host: 'localhost', port: 8000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   address: 'smtp.gmail.com',
+   domain: 'gmail.com',
+   port: 587,
+   user_name: Rails.application.credentials.dig(:gmail, :email),
+   password: Rails.application.credentials.dig(:gmail, :app_password),
+   authentication: :login
+ }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -67,7 +79,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-
-  config.active_job.queue_adapter = :inline #エラー回避用
-  config.hosts.clear #どんなホストからでもアクセスできるようにするコマンド
+  
+  #エラー回避用
+  config.active_job.queue_adapter = :inline
+  
+  #どんなホストからでもアクセスできるようにするコマンド
+  config.hosts.clear
 end
