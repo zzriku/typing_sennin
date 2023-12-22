@@ -1,9 +1,12 @@
 class Public::HomesController < ApplicationController
+  protect_from_forgery
   def top
-    #@user = User.find(current_user.id) if user_signed_in?
   end
 
   def contact
-    #@user = User.find(current_user.id) if user_signed_in?
+  end
+
+  def email
+    redirect_to root_path, notice: "お問い合わせが完了しました。"
   end
 end

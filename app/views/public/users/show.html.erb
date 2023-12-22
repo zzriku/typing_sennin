@@ -1,16 +1,20 @@
 <%= render "layouts/user_header" %>
-
-<div>
-  <h3><%= @user.handle %></h3>
-<% if @user.image.attached? %>
-  <%= image_tag @user.image, size: "125x125" %>
-<% else %>
-  <%= image_tag 'sennin', size: "125x125" %>
-<% end %>
-<% if current_user && !current_user.guest? && @user.id == current_user.id %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark" %></p>
-  <% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h3><%= @user.handle %></h3>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image, size: "125x125", class: "profile-image img-fluid rounded-circle mb-3" %>
+          <% else %>
+            <%= image_tag 'sennin', size: "125x125", class: "profile-image img-fluid rounded-circle mb-3" %>
+          <% end %>
+          <% if current_user && !current_user.guest? && @user.id == current_user.id %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark" %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<% if current_user %>
-  <li><%= link_to "いいねしたコメント", liked_comments_user_path(current_user.id), data: { "turbolinks" => false } do %><i class="fas fa-thumbs-up"></i>いいねしたコメント<% end %></li>
-<% end %>
