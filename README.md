@@ -32,7 +32,7 @@
 - フレームワーク : Ruby on Rails
 - JSライブラリ : jQuery
 - IDE : Cloud9
-- 本番環境 AWS(EC2,Nginx,Puma)
+- 本番環境 : AWS(EC2,Nginx,Puma)
 
 ## 使用素材
 - illustAC様
