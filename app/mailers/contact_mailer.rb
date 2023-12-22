@@ -5,9 +5,8 @@ class ContactMailer < ApplicationMailer
   #
   #   en.contact_mailer.notification.subject
   #
-  def notification(args)
-    email = args[:email]
-    @url = 'http://localhost:8000/orders'
-    mail(to: email, subject: 'お問い合わせが完了しました。')
+  def contact_mail(contact, user)
+    @contact = contact
+    mail to: user.email, bcc: ENV['ACTION_MAILER_USER'], subject: "お問い合わせについて【自動送信】"
   end
 end

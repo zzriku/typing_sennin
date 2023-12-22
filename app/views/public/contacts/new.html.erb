@@ -1,0 +1,34 @@
+<%= render "layouts/user_header" %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">お問い合わせフォーム</h5>
+          <%= form_with(model: @contact, local: true) do |f| %>
+            <% if @contact.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                  <% @contact.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <%= f.label "お名前" %>
+              <%= f.text_field :name, placeholder: "お名前", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label "お問合せ内容" %>
+              <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "form-control", rows: 5 %>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= f.button "送信", type: "submit", class: "btn btn-primary" %>
+              <%= link_to "もどる", root_path, class: "btn btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

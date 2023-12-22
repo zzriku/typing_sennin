@@ -16,10 +16,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get "contact"=>"homes#contact"
-    post "contact"=>"homes#email"
     post "posts/:id/comments/:id/favorites/:id"=>"favorites#create", as: :post_comment_favorites
     delete "posts/:id/comments/:id/favorites/:id"=>"favorites#destroy", as: :post_comment_favorite
+    get "posts/:id/comments/:id"=>"posts#show"
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
     get "type.js"=>"typings#index"
@@ -29,6 +28,7 @@ Rails.application.routes.draw do
         get :liked_comments
       end
     end
+    resources :contacts, only: [:new, :create]
     resources :typings, only: [:index]
     resources :posts, only: [:index, :new, :create, :show] do
       resources :comments, only: [:create, :destroy, :edit, :update] do
