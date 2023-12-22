@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :scoreboards, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
-  
+
 
   GUEST_USER_EMAIL = "guest@guest.com"
 
@@ -30,4 +30,13 @@ class User < ApplicationRecord
 
   #ユーザーのアイコン表示機能
   has_one_attached :image
+
+  #いいねしたコメントを表示
+  def self.liked_comments(user, page, per_page)
+  includes(:favorites)
+    .where(favorites: { user_id: user.id })
+    .order(created_at: :desc)
+    .page(page)
+    .per(per_page)
+  end
 end

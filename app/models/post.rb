@@ -2,8 +2,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
 
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence:  { message: "を入力してください" }
+  validates :content, presence: { message: "を入力してください" }
 
   #コメント数を計算するメソッド
   def update_comment_count

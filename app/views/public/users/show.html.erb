@@ -17,4 +17,38 @@
       </div>
     </div>
   </div>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body bg-light p3">
+          <h4 class="card-title">いいねしたコメント一覧</h4>
+          <% @user.favorites.each do |favorite| %>
+            <div class="media mb-3">
+              <div class="media-body">
+                <h5 class="mt-0"><%= link_to favorite.post.title, post_comment_favorite_path(favorite.post) %></h5>
+                <p><%= favorite.comment.content %></p>
+                <small><%= favorite.comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-light p3">
+        <div class="card-body">
+          <h4 class="card-title">コメントした投稿一覧</h4>
+          <% @user.comments.each do |comment| %>
+            <div class="media mb-3 bg-light p3">
+              <div class="media-body">
+                <h5 class="mt-0">スレッド名: <%= link_to comment.post.title, post_comment_path(comment.post) %></h5>
+                <p>コメント内容: <%= comment.content %></p>
+                <small><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

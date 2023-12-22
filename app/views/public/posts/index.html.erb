@@ -4,7 +4,12 @@
     <div class="col-md-8 offset-md-2">
       <div class="card">
         <div class="card-header bg-dark text-white">
-          <h4 class="mb-0">掲示板一覧</h4>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">掲示板一覧</h4>
+            <%= link_to new_post_path, class: "btn btn-primary" do %>
+              新規投稿
+            <% end %>
+          </div>
         </div>
         <div class="card-body">
           <% @posts.each do |post| %>
