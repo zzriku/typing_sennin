@@ -1,11 +1,16 @@
-<% if comment.favorited_by?(current_user) %>
-  <%= link_to post_comment_favorite_path(post_id: comment.post.id, comment_id: comment.id), method: :delete do %>
-    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-    ❤<%= comment.favorites.count %> いいね
+<% if user_signed_in? %>
+  <% if comment.favorited_by?(current_user) %>
+    <%= link_to post_comment_favorite_path(post_id: comment.post.id, comment_id: comment.id), method: :delete do %>
+      <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+      ❤<%= comment.favorites.count %> いいね
+    <% end %>
+  <% else %>
+    <%= link_to post_comment_favorites_path(post_id: comment.post.id, comment_id: comment.id), method: :post do %>
+      <i class="fas fa-heart" aria-hidden="true"></i>
+      ❤<%= comment.favorites.count %> いいね
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to post_comment_favorites_path(post_id: comment.post.id, comment_id: comment.id), method: :post do %>
-    <i class="fas fa-heart" aria-hidden="true"></i>
-    ❤<%= comment.favorites.count %> いいね
-  <% end %>
+  <%= link_to 'いいねをするにはログインしてください。', new_user_session_path %>
+  ❤<%= comment.favorites.count %> いいね
 <% end %>

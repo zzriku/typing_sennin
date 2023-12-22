@@ -1,0 +1,12 @@
+<%= render 'layouts/admin_header' %>
+<div class="forum-posts">
+  <% @posts.each do |post| %>
+    <div class="forum-post">
+      <%= link_to admin_post_path(post) do %>
+        <h2>タイトル: <%= post.title %></h2>
+      <% end %>
+      <p>ユーザー名: <%= post.user.handle %></p>
+      <p>コメント数: <%= post.comments.count %></p>
+    </div>
+  <% end %>
+</div>

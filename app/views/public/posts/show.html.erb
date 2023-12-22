@@ -1,31 +1,35 @@
 <%= render "layouts/user_header" %>
 
-<div>
-  <p><%= @post.title %></p>
-  <p><%= @post.user.handle %></p>
-  <p><%= @post.content %></p>
-  <p>投稿日：<%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-</div>
-
-<div>
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-  <% if comment.user && comment.user.image.attached? %>
-    <p><%= image_tag comment.user.image, size: "100x100" %></p>
-    <% else %>
-    <%= image_tag 'sennin', size: "100x100" %>
+<div class="container">
+  <div class="post">
+    <h2><%= @post.title %></h2>
+    <p>投稿者: <%= link_to @post.user.handle, user_path(@post.user) %></p>
+    <p><%= @post.content %></p>
+    <p>投稿日：<%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+  </div>
+  <div class="comments">
+    <h3>コメント件数：<%= @post.comments.count %></h3>
+    <% @post.comments.each do |comment| %>
+      <div class="comment">
+        <% if comment.user && comment.user.image.attached? %>
+          <%= image_tag comment.user.image, size: "100x100", class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag 'sennin', size: "100x100", class: "rounded-circle" %>
+        <% end %>
+        <p><strong><%= link_to comment.user.handle, user_path(@comment.user) %></strong></p>
+        <p><small><%= comment.created_at.strftime('%Y/%m/%d') %></small></p>
+        <p><%= comment.content %></p>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger btn-sm" %>
+        <% end %>
+        <p><%= render "layouts/btn", comment: comment %></p>
+      </div>
     <% end %>
-    <%= comment.user.handle %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.content %>
-    <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+  </div>
+  <div class="new-comment">
+    <%= form_with model: [@post, Comment.new], html: { class: "mt-4" } do |f| %>
+      <%= f.text_area :content, rows: '5', placeholder: "コメントをする", class: "form-control mb-2" %>
+      <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>
-    <td><%= render "layouts/btn", comment: comment %></td>
-<% end %>
-</div>
-<div>
-  <%= form_with model: [@post, Comment.new] do |f| %>
-    <%= f.text_area :content, rows: '5', placeholder: "コメントをする" %>
-    <%= f.submit "送信" %>
-  <% end %>
+  </div>
 </div>

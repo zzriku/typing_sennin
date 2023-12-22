@@ -1,11 +1,12 @@
 <%= render "layouts/user_header" %>
-
-<% @posts.each do |post| %>
-  <div>
-    <%= link_to post_path(post) do %>
-      <p>タイトル: <%= post.title %></p>
-    <% end %>
-    <p>ユーザー名: <%= post.user.handle %></p>
-    <td>コメント数: <%= post.comments.count %></td>
-  </div>
-<% end %>
+<div class="forum-posts">
+  <% @posts.each do |post| %>
+    <div class="forum-post">
+      <%= link_to post_path(post) do %>
+        <h2>タイトル: <%= post.title %></h2>
+      <% end %>
+      <p>ユーザー名: <%= post.user.handle %></p>
+      <p>コメント数: <%= post.comments.count %></p>
+    </div>
+  <% end %>
+</div>

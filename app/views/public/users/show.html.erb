@@ -11,4 +11,6 @@
   <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-dark" %></p>
   <% end %>
 </div>
-<li><%= link_to liked_comments_user_path(current_user), data: { "turbolinks" => false } do %><i class="fas fa-thumbs-up"></i>いいねしたコメント<% end %></li>
+<% if current_user %>
+  <li><%= link_to "いいねしたコメント", liked_comments_user_path(current_user.id), data: { "turbolinks" => false } do %><i class="fas fa-thumbs-up"></i>いいねしたコメント<% end %></li>
+<% end %>

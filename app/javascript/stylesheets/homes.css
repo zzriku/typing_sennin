@@ -1,0 +1,12 @@
+<style>
+  .welcome-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('images/typing.jpg');
+    background-size: cover; /* 画像を要素に合わせて表示 */
+    background-position: center; /* 画像の位置を中央に設定 */
+  }
+</style>
