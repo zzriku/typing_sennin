@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @posts = Post.all
     @user = current_user

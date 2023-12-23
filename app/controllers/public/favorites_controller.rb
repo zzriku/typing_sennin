@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:destroy, :create]
+
   def create
     comment = Comment.find(params[:comment_id])
     favorite = current_user.favorites.new(comment_id: comment.id)

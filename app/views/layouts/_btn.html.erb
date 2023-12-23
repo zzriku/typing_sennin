@@ -10,7 +10,4 @@
       ❤<%= comment.favorites.count %> いいね
     <% end %>
   <% end %>
-<% else %>
-  <%= link_to 'いいねをするにはログインしてください。', new_user_session_path %>
-  ❤<%= comment.favorites.count %> いいね
 <% end %>
