@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post "posts/:id/comments/:id/favorites/:id"=>"favorites#create", as: :post_comment_favorites
     delete "posts/:id/comments/:id/favorites/:id"=>"favorites#destroy", as: :post_comment_favorite
     get "posts/:id/comments/:id"=>"posts#show"
+    get "posts/:id/comments/:id/favorites/:id"=>"posts#show"
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
     get "type.js"=>"typings#index"
@@ -40,12 +41,15 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/"=>"homes#top"
     get "admins/sign_out"=>"admin/sessions#destroy"
-    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    #get "admin/users/:id/edit"=>"users#edit"
+    get "admin/posts/:id/comments/:id"=>"posts#show"
+    resources :users, only: [:index, :show, :edit, :update] do
       member do
         patch :withdraw
       end
     end
-    resources :posts, only: [:index, :show, :destroy, :update]
-    resources :comments, only: [:index, :destroy, :update]
+    resources :posts, only: [:index, :show, :destroy, :update] do
+      resources :comments, only: [:index, :destroy, :update,]
+    end
   end
 end

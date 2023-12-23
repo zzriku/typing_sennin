@@ -25,7 +25,7 @@
           <% @user.favorites.each do |favorite| %>
             <div class="media mb-3">
               <div class="media-body">
-                <h5 class="mt-0"><%= link_to favorite.post.title, post_comment_favorite_path(favorite.post) %></h5>
+                <h5 class="mt-0">スレッド名: <%= link_to favorite.comment.content, post_comment_favorite_path(favorite.comment) %></h5>
                 <p><%= favorite.comment.content %></p>
                 <small><%= favorite.comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
               </div>
