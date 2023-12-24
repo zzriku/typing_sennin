@@ -1,2 +1,44 @@
 @use '~bootstrap/scss/bootstrap';
-@use './homes';
+//@use './homes';
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: gray;
+  padding: 20px;
+}
+
+header {
+  background-color: rgb(255, 255, 204); /* ヘッダーの背景色 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影の追加 */
+}
+
+nav ul {
+  list-style: none; /* リストのマーカーを削除 */
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline; /* ボタンを横並びにする */
+  margin-right: 10px; /* ボタン間の間隔 */
+}
+
+/* ボタンのスタイル */
+.btn {
+  background-color: #f5f5f5; /* ボタンの背景色 */
+  color: #333; /* ボタンのテキスト色 */
+  padding: 8px 16px; /* ボタンの余白 */
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #ddd; /* ホバー時の背景色 */
+}
+
+/* ロゴのスタイル */
+.logo img {
+  width: 100px; /* ロゴの幅 */
+  height: 50px; /* ロゴの高さ */
+}
