@@ -3,54 +3,82 @@
     <nav class="container">
       <div class="row align-items-center">
         <div class="col">
-          <% link_to root_path do %>
-            <%= image_tag("typing_sennin", alt: "LOGO", size: "100x50") %>
+          <% if admin_signed_in? %>
+            <%= link_to admin_path do %>
+              <%= image_tag("typing_sennin", alt: "LOGO", size: "100x50") %>
+            <% end %>
+          <% else %>
+            <%= link_to root_path do %>
+              <%= image_tag("typing_sennin", alt: "LOGO", size: "100x50") %>
+            <% end %>
           <% end %>
         </div>
         <div class="col text-right">
-          <div class="search_form">
-            <%= form_with url: search_path, local: true, method: :get, class: "d-flex align-items-center" do |f| %>
-              <%= f.text_field :word, class: "form-control mr-2", placeholder: "検索" %>
-              <%= f.select :range, options_for_select([['コメント'], ['タイトル']]), {}, class: "form-control mr-2" %>
-              <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]), {}, class: "form-control mr-2" %>
-              <%= f.submit "検索", class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col">
-          <ul class="list-inline text-center">
-            <% if !user_signed_in? && !current_user&.guest? %>
+          <% if admin_signed_in? %>
+            <div class="search_form">
+              <!-- 管理者用の検索フォーム -->
+              <%= form_with url: admin_admin_search_path, local: true, method: :get, class: "d-flex align-items-center" do |f| %>
+                <%= f.text_field :word, class: "form-control mr-2", placeholder: "検索" %>
+                <%= f.select :range, options_for_select([['コメント'], ['タイトル']]), {}, class: "form-control mr-2" %>
+                <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]), {}, class: "form-control mr-2" %>
+                <%= f.submit "検索", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            <ul class="list-inline">
+              <!-- 管理者向けのリンクやログアウトボタンなど -->
               <li class="list-inline-item">
-                <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-outline-dark" %>
-              </li>
-            <% end %>
-            <li class="list-inline-item">
-              <%= link_to "タイピング", typing_path, class: "btn btn-outline-dark" %>
-            </li>
-            <li class="list-inline-item">
-              <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
-            </li>
-            <li class="list-inline-item">
-              <%= link_to "お問い合わせ", new_contact_path, class: "btn btn-outline-dark" %>
-            </li>
-            <% if user_signed_in? %>
-              <li class="list-inline-item">
-                <%= link_to "プロフィール", user_path(current_user), class: "btn btn-outline-dark" %>
+                <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-outline-dark" %>
               </li>
               <li class="list-inline-item">
-                <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
-              </li>
-            <% else %>
-              <li class="list-inline-item">
-                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>
+                <%= link_to "スレッド一覧", admin_posts_path, class: "btn btn-outline-dark" %>
               </li>
               <li class="list-inline-item">
-                <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>
+                <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
               </li>
-            <% end %>
-          </ul>
+            </ul>
+          <% else %>
+            <div class="search_form">
+              <!-- ユーザー用の検索フォーム -->
+              <%= form_with url: search_path, local: true, method: :get, class: "d-flex align-items-center" do |f| %>
+                <%= f.text_field :word, class: "form-control mr-2", placeholder: "検索" %>
+                <%= f.select :range, options_for_select([['コメント'], ['タイトル']]), {}, class: "form-control mr-2" %>
+                <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]), {}, class: "form-control mr-2" %>
+                <%= f.submit "検索", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            <ul class="list-inline">
+              <!-- ユーザー向けのリンクやログイン・新規登録ボタンなど -->
+              <% if !user_signed_in? && !current_user&.guest? %>
+                <li class="list-inline-item">
+                  <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-outline-dark" %>
+                </li>
+              <% end %>
+              <li class="list-inline-item">
+                <%= link_to "タイピング", typing_path, class: "btn btn-outline-dark" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to "お喋り広場", posts_path, class: "btn btn-outline-dark" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to "お問い合わせ", new_contact_path, class: "btn btn-outline-dark" %>
+              </li>
+              <% if user_signed_in? %>
+                <li class="list-inline-item">
+                  <%= link_to "プロフィール", user_path(current_user), class: "btn btn-outline-dark" %>
+                </li>
+                <li class="list-inline-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-dark", data: { turbo_method: :delete } %>
+                </li>
+              <% else %>
+                <li class="list-inline-item">
+                  <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-dark" %>
+                </li>
+                <li class="list-inline-item">
+                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-dark" %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
         </div>
       </div>
     </nav>

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get "admins/sign_out"=>"admin/sessions#destroy"
     #get "admin/users/:id/edit"=>"users#edit"
     get "admin/posts/:id/comments/:id"=>"posts#show"
+    get '/search', to: 'search#search', as: :admin_search
     resources :users, only: [:index, :show, :edit, :update] do
       member do
         patch :withdraw
