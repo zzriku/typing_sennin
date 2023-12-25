@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>タイピング仙人</title>
+        <title>TypingSennin</title>
 <meta charset="utf-8">
         <link rel="stylesheet">
     <audio src ="javascript/audios/_sound_incorrect1.mp3" id="missaudio">現環境では音が鳴りません</audio>
@@ -47,7 +47,7 @@ var wordlistJapanese = ["海賊船","貧乏くじ","車いす","生麦生米生�
      }
      function wordDisplay(){
          random = Math.floor( Math.random() * wordlist.length );
-         word.innerHTML=wordlist[random];
+         romaji.innerHTML=wordlist[random];
          japanese.innerHTML=wordlistJapanese[random];
          charInsort();
      }
@@ -58,7 +58,7 @@ var wordlistJapanese = ["海賊船","貧乏くじ","車いす","生麦生米生�
          score = Math.floor(Math.pow(correct,2) * Math.pow((correct/(correct+mistake)),5));
          scoredis.innerHTML="スコア:"+score+"点"+"<hr>正タイプ数:"+correct+"<br>ミスタイプ数:"+mistake+"<br>正答率"+(correct/(correct+mistake)*100).toFixed(1)+"%";
          count.innerHTML="";
-         word.innerHTML="";
+         romaji.innerHTML="";
          japanese.innerHTML="";
          start_button.style.visibility ="visible";
          word_char=0;
@@ -80,7 +80,7 @@ document.onkeydown = function(e) {
         document.getElementById('correctaudio').pause();
                    document.getElementById('correctaudio').currentTime = 0;
         document.getElementById('correctaudio').play();
-        word.innerHTML="<span style='color: red;'>"+wordlist[random].substr(0,char_num+1)+"</span>"+wordlist[random].substr(char_num+1,wordlist[random].length);
+        romaji.innerHTML="<span style='color: red;'>"+wordlist[random].substr(0,char_num+1)+"</span>"+wordlist[random].substr(char_num+1,wordlist[random].length);
         char_num++;
         correct++;
         charInsort();
@@ -105,7 +105,7 @@ document.onkeydown = function(e) {
                 <input type="button" id="start_button" value="start" onclick="ready()" style="text-align: center">
                 <div id="count"></div>
                     <h1><div id="japanese"></div></h1>
-                    <h2><div id="word"></div></h2>
+                    <h2><div id="romaji"></div></h2>
                 <div id="scoredis"></div>
     </div>
 

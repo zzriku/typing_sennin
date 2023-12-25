@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body text-center">
-          <h3><%= @user.handle %></h3>
+          <h3 class="text-dark"><%= @user.handle %></h3>
           <% if @user.image.attached? %>
             <%= image_tag @user.image, size: "125x125", class: "profile-image img-fluid rounded-circle mb-3" %>
           <% else %>

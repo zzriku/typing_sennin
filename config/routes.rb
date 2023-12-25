@@ -21,8 +21,6 @@ Rails.application.routes.draw do
     root to: "homes#top"
     post "posts/:id/comments/:id/favorites/:id"=>"favorites#create", as: :post_comment_favorites
     delete "posts/:id/comments/:id/favorites/:id"=>"favorites#destroy", as: :post_comment_favorite
-    get "posts/:id/comments/:id"=>"posts#show"
-    get "posts/:id/comments/:id/favorites/:id"=>"posts#show"
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
     get "type.js"=>"typings#index"

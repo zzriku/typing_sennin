@@ -24,7 +24,7 @@
           <% @user.favorites.each do |favorite| %>
             <div class="media mb-3">
               <div class="media-body">
-                <h5 class="mt-0">スレッド名: <%= link_to favorite.comment.content, post_comment_favorite_path(favorite.comment) %></h5>
+                <h5 class="mt-0">スレッド名: <%= link_to favorite.comment.content, post_path(favorite.comment.post) %></h5>
                 <p><%= favorite.comment.content %></p>
                 <small><%= favorite.comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
               </div>
@@ -40,7 +40,7 @@
           <% @user.comments.each do |comment| %>
             <div class="media mb-3 bg-light p3">
               <div class="media-body">
-                <h5 class="mt-0">スレッド名: <%= link_to comment.post.title, post_comment_path(comment.post) %></h5>
+                <h5 class="mt-0">スレッド名: <%= link_to comment.post.title, post_path(comment.post) %></h5>
                 <p>コメント内容: <%= comment.content %></p>
                 <small><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
               </div>
