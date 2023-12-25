@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "/javascript/audios/_sound_incorrect1.mp3"=>"controller_name#action_name"
+  get "/javascript/audios/_sound_correct.mp3"=>"controller_name#action_name"
+
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
