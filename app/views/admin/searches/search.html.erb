@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h2>検索結果</h2>
+  <% if @range == "Post" %>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>ユーザー</th>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.user.handle, admin_user_path(post.user) %></td>
+            <td><%= link_to post.title, admin_post_path(post) %></td>
+            <td><%= link_to post.content.truncate(50), admin_post_path(post) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>ユーザー</th>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= link_to comment.user.handle, admin_user_path(comment.user) %></td>
+            <td><%= link_to comment.post.title, admin_post_path(comment.post) %></td>
+            <td><%= comment.content.truncate(50) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
