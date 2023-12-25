@@ -2,7 +2,7 @@
 //@use './homes';
 
 body {
-  font-family: 'Arial', sans-serif;
+  //background-image: url(images/typing.jpg);
 }
 
 header {
@@ -27,4 +27,9 @@ header {
 .logo img {
   width: 100px;
   height: 50px;
+}
+
+.wrap {
+  width: 100%;
+  height: auto;
 }
