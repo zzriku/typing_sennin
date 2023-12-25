@@ -37,3 +37,5 @@
 ## 使用素材
 - illustAC様
   https://www.ac-illust.com/
+- 効果音ラボ様
+  https://soundeffect-lab.info/
