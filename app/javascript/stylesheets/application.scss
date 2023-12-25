@@ -3,24 +3,11 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-image: gray;
-  padding: 20px;
 }
 
 header {
   background-color: rgb(255, 255, 204); /* ヘッダーの背景色 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影の追加 */
-}
-
-nav ul {
-  list-style: none; /* リストのマーカーを削除 */
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline; /* ボタンを横並びにする */
-  margin-right: 10px; /* ボタン間の間隔 */
 }
 
 /* ボタンのスタイル */
@@ -34,11 +21,10 @@ nav ul li {
 }
 
 .btn:hover {
-  background-color: #ddd; /* ホバー時の背景色 */
+  background-color: #ddd;
 }
 
-/* ロゴのスタイル */
 .logo img {
-  width: 100px; /* ロゴの幅 */
-  height: 50px; /* ロゴの高さ */
+  width: 100px;
+  height: 50px;
 }
