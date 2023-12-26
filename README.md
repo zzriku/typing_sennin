@@ -22,7 +22,7 @@
 
 ## 設計書
 - ER図 <br>
-  <img src="https://github.com/zzriku/typing_sennin/assets/135505493/70efe3f0-76c2-47bc-8be9-9b83c78028d8" width="300">
+  <img src="(https://github.com/zzriku/typing_sennin/assets/135505493/863017d2-091c-4b48-9ff7-43d9373b81d7" width="300">
 - テーブル定義書 <br>
   https://docs.google.com/spreadsheets/d/1XjMqvyYQlkGbpa6eLoy3Kq7X1K2WavRcvin_MkQxfOg/edit#gid=1619535258
 
