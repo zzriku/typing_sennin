@@ -8,6 +8,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import 'images/typing.jpg';
+import "favorite.js"
 
 
 Rails.start()

@@ -78,6 +78,7 @@ gem "image_processing"
 gem 'webpacker', '~> 5.0'
 gem 'rails-i18n'
 gem 'byebug'
+gem 'jquery-rails'
 
 gem 'dotenv-rails'
 group :production do
