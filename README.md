@@ -1,5 +1,7 @@
 # タイピング仙人
 
+<img src="https://github.com/zzriku/typing_sennin/assets/135505493/4eeab8e5-49ca-4a07-9624-37e7dec11d1d" >
+
 ## サイト概要
 ### サイトテーマ
 タイピングの練習をしたり、他のプレイヤーと競争や交流をしたりできるコミュニティーサイト
@@ -22,7 +24,7 @@
 
 ## 設計書
 - ER図 <br>
-  <img src="(https://github.com/zzriku/typing_sennin/assets/135505493/863017d2-091c-4b48-9ff7-43d9373b81d7" width="300">
+  <img src="https://github.com/zzriku/typing_sennin/assets/135505493/863017d2-091c-4b48-9ff7-43d9373b81d7" width="300">
 - テーブル定義書 <br>
   https://docs.google.com/spreadsheets/d/1XjMqvyYQlkGbpa6eLoy3Kq7X1K2WavRcvin_MkQxfOg/edit#gid=1619535258
 
