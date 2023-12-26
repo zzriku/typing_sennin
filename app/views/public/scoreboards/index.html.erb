@@ -1,0 +1,17 @@
+<h1>スコアボード</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.name %></td>
+        <td><%= score.score %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -23,13 +23,13 @@ Rails.application.routes.draw do
     delete "posts/:id/comments/:id/favorites/:id"=>"favorites#destroy", as: :post_comment_favorite
     get "search"=>"searches#search"
     get "typing"=>"typings#index"
-    get "type.js"=>"typings#index"
 
     resources :users, only: [:show, :edit, :update] do
       member do
         get :liked_comments
       end
     end
+    resources :scoreboards, only: [:index, :create]
     resources :contacts, only: [:new, :create]
     resources :typings, only: [:index]
     resources :posts, only: [:index, :new, :create, :show] do
@@ -42,8 +42,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/"=>"homes#top"
     get "admins/sign_out"=>"admin/sessions#destroy"
-    #get "admin/users/:id/edit"=>"users#edit"
-    #get "admin/posts/:id/comments/:id"=>"posts#show"
     get '/search', to: 'searches#search', as: :admin_search
     resources :users, only: [:index, :show, :edit, :update] do
       member do
