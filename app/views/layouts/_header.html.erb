@@ -4,13 +4,9 @@
       <div class="row align-items-center">
         <div class="col">
           <% if admin_signed_in? %>
-            <%= link_to admin_path do %>
-              <%= image_tag("typing_sennin", alt: "LOGO", size: "100x50") %>
-            <% end %>
+            <%= link_to "タイピング仙人", admin_path, class: "custom-link" %>
           <% else %>
-            <%= link_to root_path do %>
-              <%= image_tag("typing_sennin", alt: "LOGO", size: "100x50") %>
-            <% end %>
+            <%= link_to "タイピング仙人", root_path, class: "custom-link"  %>
           <% end %>
         </div>
         <div class="col text-right">
