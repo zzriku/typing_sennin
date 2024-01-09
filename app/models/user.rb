@@ -28,6 +28,11 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 
+  #アカウント退会後ユーザーは瞬時にログインできなくなる
+  def active_for_authentication?
+    super && account_active?
+  end
+
   #ユーザーのアイコン表示機能
   has_one_attached :image
 
