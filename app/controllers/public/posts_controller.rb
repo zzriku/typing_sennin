@@ -13,7 +13,6 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      #@comment.save.update_comment_count
       flash[:notice] = 'successfully'
       redirect_to post_path(@post)
     else
