@@ -48,8 +48,8 @@ Rails.application.routes.draw do
         patch :withdraw
       end
     end
-    resources :posts, only: [:index, :show, :destroy, :update] do
-      resources :comments, only: [:index, :destroy, :update,]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:index, :destroy]
     end
   end
 end
