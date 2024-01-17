@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -26,11 +24,6 @@ class User < ApplicationRecord
   #ゲストログアウト機能
   def guest?
     email == GUEST_USER_EMAIL
-  end
-
-  #アカウント退会後ユーザーは瞬時にログインできなくなる
-  def active_for_authentication?
-    super && account_active?
   end
 
   #ユーザーのアイコン表示機能

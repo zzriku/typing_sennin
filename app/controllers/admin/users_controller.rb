@@ -12,8 +12,8 @@ class Admin::UsersController < ApplicationController
   #退会アクション
   def withdraw
     @user = User.find(params[:id])
-    #return if @user.guest?
     @user.update(is_active: !@user.is_active)
+    reset_session
     redirect_to admin_users_path, notice: 'ユーザーのステータスを変更しました。'
   end
 
