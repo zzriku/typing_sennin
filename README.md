@@ -2,6 +2,8 @@
 
 <img src="https://github.com/zzriku/typing_sennin/assets/135505493/4eeab8e5-49ca-4a07-9624-37e7dec11d1d" >
 
+- http://typing-sennin.com
+
 ## サイト概要
 ### サイトテーマ
 タイピングの練習をしたり、他のプレイヤーと競争や交流をしたりできるコミュニティーサイト
@@ -29,15 +31,18 @@
   https://docs.google.com/spreadsheets/d/1XjMqvyYQlkGbpa6eLoy3Kq7X1K2WavRcvin_MkQxfOg/edit#gid=1619535258
 
 ## 開発環境
-- OS : windows 11
-- 言語 : HTML,CSS,JavaScript,Ruby,SQL
+- 言語 : HTML,CSS,JavaScript,Ruby,MySQL
 - フレームワーク : Ruby on Rails
 - JSライブラリ : jQuery
 - IDE : Cloud9
 - 本番環境 : AWS(EC2,Nginx,Puma)
 
+## 管理者ログイン
+- ID : admin
+- Password : sennin
+
 ## 使用素材
-- illustAC様
+- IllustAC様
   https://www.ac-illust.com/
 - 効果音ラボ様
   https://soundeffect-lab.info/
