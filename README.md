@@ -38,7 +38,8 @@
 - 本番環境 : AWS(EC2,Nginx,Puma)
 
 ## 管理者ログイン
-- ID : admin
+- http://typing-sennin.com/admin
+- Email : admin@admin.com
 - Password : sennin
 
 ## 使用素材
