@@ -40,7 +40,7 @@
 ## 管理者ログイン
 - http://typing-sennin.com/admin
 - Email : `admin@admin.com`
-- Password : sennin
+- Password : `sennin`
 
 ## 使用素材
 - IllustAC様
